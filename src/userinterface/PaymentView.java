@@ -15,6 +15,8 @@ public class PaymentView extends javax.swing.JFrame {
      * Creates new form PaymentView
      */
     public PaymentView() {
+        // Set the JFrame to maximize by default on opening
+        setExtendedState(PaymentView.MAXIMIZED_BOTH);   
         initComponents();
     }
 

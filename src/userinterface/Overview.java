@@ -1,21 +1,73 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package userinterface;
+
+import data.DataManager;
+import systemobjects.User;
 
 /**
  *
- * @author hbmar
+ * @author Haley Martin for Null Software
+ * @version 1.0
  */
 public class Overview extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Overview
-     */
+    private User activeUser;
+    
+    //MARK: CONSTRUCTORS
+    
+    public Overview(String username) {
+        this();
+        activeUser = DataManager.getUserByUsername(username);
+        welcomeLabel.setText("Welcome, " + activeUser.getName() + "!");
+        User.UserAccountType userType = activeUser.getUserType();
+        switch(userType) {
+            case SECRETARY:
+                setupSecretary();
+                break;
+            case METER_READER:
+                setupMeterReader();
+                break;
+            case PRESIDENT:
+                setupPresident();
+                break;
+            case TEMP:
+                setupTempWorker();
+                break;
+            default:
+                setupTempWorker();
+                break;
+        }
+    }
+    
     public Overview() {
         initComponents();
+    }
+    
+    //MARK: USER-SPECIFIC SETUP
+    
+    private void setupSecretary() {
+        sideButtonOne.setText("Overview");
+        sideButtonTwo.setText("Customers");
+        sideButtonThree.setText("Finances");
+        sideButtonFour.setText("Statistics");
+    }
+    private void setupMeterReader() {
+        sideButtonOne.setText("Overview");
+        sideButtonTwo.setText("Customers");
+        sideButtonThree.setText("Routes");
+        sideButtonFour.setText("Statistics");
+    }
+    private void setupPresident() {
+        sideButtonOne.setText("Overview");
+        sideButtonTwo.setText("Customers");
+        sideButtonThree.setText("Finances");
+        sideButtonFour.setText("Statistics");
+    }
+    private void setupTempWorker() {
+        sideButtonOne.setText("Overview");
+        sideButtonTwo.setText("Customers");
+        sideButtonThree.setText("Payments");
+        sideButtonFour.setText(" ");
+        sideButtonFour.setEnabled(false);
     }
 
     /**
@@ -27,17 +79,120 @@ public class Overview extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        welcomeLabel = new javax.swing.JLabel();
+        sideButtonOne = new javax.swing.JButton();
+        sideButtonFour = new javax.swing.JButton();
+        sideButtonThree = new javax.swing.JButton();
+        sideButtonTwo = new javax.swing.JButton();
+        stagePanel = new javax.swing.JPanel();
+        searchBar = new javax.swing.JTextField();
+        customerTableScrollPane = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        welcomeLabel.setFont(new java.awt.Font("Tahoma", 0, 28)); // NOI18N
+        welcomeLabel.setText("Welcome, User!");
+
+        sideButtonOne.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        sideButtonOne.setText("Button1");
+
+        sideButtonFour.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        sideButtonFour.setText("Button4");
+        sideButtonFour.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
+        sideButtonThree.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        sideButtonThree.setText("Button3");
+
+        sideButtonTwo.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        sideButtonTwo.setText("Button2");
+
+        stagePanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
+
+        searchBar.setText("Search...");
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        customerTableScrollPane.setViewportView(jTable1);
+
+        javax.swing.GroupLayout stagePanelLayout = new javax.swing.GroupLayout(stagePanel);
+        stagePanel.setLayout(stagePanelLayout);
+        stagePanelLayout.setHorizontalGroup(
+            stagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(stagePanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(searchBar)
+                .addContainerGap())
+            .addComponent(customerTableScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1047, Short.MAX_VALUE)
+        );
+        stagePanelLayout.setVerticalGroup(
+            stagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, stagePanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(searchBar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(customerTableScrollPane))
+        );
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(welcomeLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(312, 312, 312))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(sideButtonFour, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(sideButtonThree, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(sideButtonOne, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(sideButtonTwo, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(stagePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(welcomeLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(sideButtonOne, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(sideButtonTwo, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(sideButtonThree, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(sideButtonFour, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(stagePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -79,5 +234,15 @@ public class Overview extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JScrollPane customerTableScrollPane;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JTextField searchBar;
+    private javax.swing.JButton sideButtonFour;
+    private javax.swing.JButton sideButtonOne;
+    private javax.swing.JButton sideButtonThree;
+    private javax.swing.JButton sideButtonTwo;
+    private javax.swing.JPanel stagePanel;
+    private javax.swing.JLabel welcomeLabel;
     // End of variables declaration//GEN-END:variables
 }

@@ -15,6 +15,8 @@ public class CustomerView extends javax.swing.JFrame {
      * Creates new form CustomerView
      */
     public CustomerView() {
+        // Set the JFrame to maximize by default on opening
+        setExtendedState(CustomerView.MAXIMIZED_BOTH);   
         initComponents();
     }
 

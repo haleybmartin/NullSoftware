@@ -15,6 +15,8 @@ public class StatisticsView extends javax.swing.JFrame {
      * Creates new form StatisticsView
      */
     public StatisticsView() {
+        // Set the JFrame to maximize by default on opening
+        setExtendedState(StatisticsView.MAXIMIZED_BOTH);   
         initComponents();
     }
 
